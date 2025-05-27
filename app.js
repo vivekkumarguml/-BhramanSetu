@@ -1,3 +1,8 @@
+require('dotenv').config(); // at the top of app.js if not done already
+
+if(process.env.NODE_ENV !="production" ){
+   require('dotenv').config();
+}
 const express =require("express");
 const app =express();
 const mongoose = require("mongoose");
@@ -9,12 +14,14 @@ const ExpressError=require("./utils/ExpressError.js");
 const Review=require("./models/review.js");
 
 const session=require("express-session");
+const MongoStore = require('connect-mongo');
 const  flash=require("connect-flash");
 const passport =require("passport");
 const LocalStrategy= require("passport-local");
 const User = require("./models/user.js")
 
-const MONGO_URL="mongodb://127.0.0.1:27017/wanderlust";
+
+const dbUrl=process.env.ATLASDB_URL;
 
 main().then(()=>{
     console.log("connected to DB");
@@ -23,7 +30,7 @@ main().then(()=>{
     console.log(err);
 })
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");
@@ -34,9 +41,20 @@ app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.urlencoded({ extended: true }));
 
+const store= MongoStore.create({
+    mongoUrl:dbUrl,
+     crypto: {
+    secret:process.env.SECRET,
+    touchAfter: 24 * 3600,
+  }
+});
 
+store.on("error",()=>{
+    console.log("ERROR in MONGO SESSION STORE",err)
+})
 const sessionOption={
-    secret:"mysupersecretcode",
+    store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -84,34 +102,13 @@ app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
-
-
-// app.get("/testListing", async (req,res)=>{
-//   let sampleListing = new Listing({
-//     title:"My New Villa",
-//     description:" Buy the beach ",       
-//     price:1200,
-//     location:"Calangute, Goa",
-//     country:"India",
-//   });
-//   await sampleListing.save();
-//   console.log("sample was saved");
-//   res.send("successful testing");
-
-// })
-
 // app.all("*",(req,res,next)=>{
 //     next(new ExpressError(404,"Page not Found!"));
 // });
 
-app.get("/",(req,res)=>{
-    res.send("Hi , I am rooot");
-});
-
 app.use((err,req,res,next)=>{
     let {status=500, message="Something went wrong! "}=err;
     res.status(status).render("error.ejs",{message});
-    //res.status(status).send(message);
 })
 app.listen(8080,()=>{
     console.log("Server is listening to port 8080");
