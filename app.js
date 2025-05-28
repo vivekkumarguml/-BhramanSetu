@@ -1,5 +1,3 @@
-require('dotenv').config(); // at the top of app.js if not done already
-
 if(process.env.NODE_ENV !="production" ){
    require('dotenv').config();
 }
