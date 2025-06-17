@@ -73,17 +73,25 @@ npm start
 ---
 
 ##  Folder Structure (MVC)
+![Home Page](assets/screenshots/foler_structure.png)
 
-bhramansetu/
-├── models/ # Mongoose data models
-├── views/ # HTML templates
-├── routes/ # Express routes
-├── controllers/ # Request handling logic
-├── public/ # Static files (CSS, JS, images)
-├── config/ # Passport config & DB connection
-├── app.js # Express entry point
-└── .env # Environment variables
 
+## 📸 Screenshots
+
+### 🏠 Landing Page
+![Home Page](assets/screenshots/home.png)
+
+### 🔍 Destination Details
+![Destination Details](assets/screenshots/details.png)
+
+### 📝 Add New Destination
+![Add Destination](assets/screenshots/add.png)
+
+### 🔐 Register
+![Login Page](assets/screenshots/register.png)
+
+### 🔐Login/
+![Login Page](assets/screenshots/login.png)
 Developed By
 Vivek Kumar
 
