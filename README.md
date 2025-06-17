@@ -73,25 +73,25 @@ npm start
 ---
 
 ##  Folder Structure (MVC)
-![Home Page](assets/screenshots/foler_structure.png)
+![File Structure](Images/FileStructure.jpg)
 
 
 ## 📸 Screenshots
 
 ### 🏠 Landing Page
-![Home Page](assets/screenshots/home.png)
+![LandingPage](Images/LandingPage.jpg)
 
-### 🔍 Destination Details
-![Destination Details](assets/screenshots/details.png)
+### 🔍 Sign Up Page
+![Sign Up Page](Images/SignUpPage.jpg))
 
-### 📝 Add New Destination
-![Add Destination](assets/screenshots/add.png)
+### 📝 Log In Page
+![Log In Page](Images/LogInPage.jpg))
 
-### 🔐 Register
-![Login Page](assets/screenshots/register.png)
+### 🔐 Edit Page
+![ Edit Page](Images/EditPage.jpg))
 
-### 🔐Login/
-![Login Page](assets/screenshots/login.png)
+### 🔐 New Listings Page
+![ New Listings Page](Images/NewListingPage.jpg))
 Developed By
 Vivek Kumar
 
