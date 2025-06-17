@@ -82,22 +82,27 @@ npm start
 ![LandingPage](Images/LandingPage.jpg)
 
 ### 🔍 Sign Up Page
-![Sign Up Page](Images/SignUpPage.jpg))
+![Sign Up Page](Images/SignUpPage.jpg)
 
 ### 📝 Log In Page
-![Log In Page](Images/LogInPage.jpg))
+![Log In Page](Images/LogInPage.jpg)
 
 ### 🔐 Edit Page
-![ Edit Page](Images/EditPage.jpg))
+![ Edit Page](Images/EditPage.jpg)
 
 ### 🔐 New Listings Page
-![ New Listings Page](Images/NewListingPage.jpg))
+![ New Listings Page](Images/NewListingPage.jpg)
+
+
 Developed By
 Vivek Kumar
 
 📝 License
 This project is licensed under the MIT License.
 
+
 🔗 Live Demo: https://bhramansetu.onrender.com
+
 Built with ❤️ by Vivek Kumar
+
 Feel free to fork, contribute, or use it as a reference for your own travel projects.
