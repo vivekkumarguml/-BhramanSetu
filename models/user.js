@@ -5,8 +5,16 @@ const passportLocalMongoose =require("passport-local-mongoose");
 const userSchema =new Schema({
     email:{
         type:String,
-        required:true
-    }
+        required:true,
+        unique: true
+    },
+     profileImage: {
+    type: String, 
+    default: "/images/default-profile.png"
+  },
+   phone: {
+    type: String
+  }
 });
 
 

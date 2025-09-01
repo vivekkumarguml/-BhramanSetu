@@ -16,7 +16,8 @@ const MongoStore = require('connect-mongo');
 const  flash=require("connect-flash");
 const passport =require("passport");
 const LocalStrategy= require("passport-local");
-const User = require("./models/user.js")
+const User = require("./models/user.js");
+const profileRoutes = require("./routes/profile");
 
 
 const dbUrl=process.env.ATLASDB_URL;
@@ -38,6 +39,7 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.urlencoded({ extended: true }));
+app.use("/profile", profileRoutes);
 
 const store= MongoStore.create({
     mongoUrl:dbUrl,
@@ -96,11 +98,14 @@ const listingRouter=require("./routes/listing.js");
 const reviewRouter =require("./routes/review.js");
 const userRouter =require("./routes/user.js");
 const bookingRoutes = require("./routes/booking.js"); 
+const policiesRoutes = require("./routes/policies.js");
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 app.use("/bookings", bookingRoutes);  
+app.use("/policy", policiesRoutes);
+
 
 // app.all("*",(req,res,next)=>{
 //     next(new ExpressError(404,"Page not Found!"));
