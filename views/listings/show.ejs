@@ -16,6 +16,9 @@
           </div>
           
     <br>
+    <% if(currUser && !listing.owner._id.equals(currUser._id)) { %>
+    <a href="/bookings/<%= listing._id %>/book" class="btn btn-success col-2 offset-5">Book Now</a>
+    <% } %>
 
     <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
     <div class="btns">

@@ -6,7 +6,7 @@ const app =express();
 const mongoose = require("mongoose");
 const path=require("path");
 const methodOverride=require("method-override");
-const ejsMate=require("ejs-mate");
+const ejsMate=require("ejs-mate");               // define a master layout and then reuse it across pages.
 const wrapAsync=require("./utils/wrapAsync.js");
 const ExpressError=require("./utils/ExpressError.js");
 const Review=require("./models/review.js");
@@ -95,10 +95,12 @@ app.get("/demouser",async(req,res)=>{
 const listingRouter=require("./routes/listing.js");
 const reviewRouter =require("./routes/review.js");
 const userRouter =require("./routes/user.js");
+const bookingRoutes = require("./routes/booking.js"); 
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+app.use("/bookings", bookingRoutes);  
 
 // app.all("*",(req,res,next)=>{
 //     next(new ExpressError(404,"Page not Found!"));
